@@ -4,6 +4,8 @@ import { ListProducts } from "./components/ListProduct";
 import { Cart } from "./components/ShoppingCart";
 import { api } from "./API/api.js";
 import { Main } from "./App.js";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -51,6 +53,18 @@ function App() {
         <ListProducts products={products} setCart={setCart} cart={cart} />
         <Cart cart={cart} setCart={setCart} total={total} setTotal={setTotal} />
       </Main>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }

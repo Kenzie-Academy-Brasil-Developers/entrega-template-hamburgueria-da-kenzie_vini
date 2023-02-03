@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { CartStyle, ListCart, Total } from "./style";
+import { toast } from "react-toastify";
 
 export function Cart({ cart, setCart, total }) {
   function removeProductOfCart(product, index) {
@@ -9,9 +10,30 @@ export function Cart({ cart, setCart, total }) {
 
     setCart(products);
     localStorage.setItem("@PRODUCT", JSON.stringify(products));
+
+    toast.success("Item removido", {
+      position: "top-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
 
   function removeAll() {
+    toast.success("Todos os itens foram removidos!", {
+      position: "top-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     setCart([]);
     localStorage.removeItem("@PRODUCT");
   }

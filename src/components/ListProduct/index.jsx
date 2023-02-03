@@ -1,14 +1,34 @@
 import { ListProductStyle } from "./style";
 import { v4 as uuid } from "uuid";
+import { toast } from "react-toastify";
 
 export function ListProducts({ products, setCart, cart }) {
   function addProductsLocal(product) {
     if (cart.some((elt) => elt.name === product.name)) {
-      alert("Item já adicionado!");
+      toast.warning("Este item já foi adicionado", {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } else {
       setCart([...cart, product]);
       localStorage.setItem("@PRODUCT", JSON.stringify([...cart, product]));
-      console.log(product);
+
+      toast.success("Adicionado com succeso", {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   }
 
