@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [productsResponse, setProductsResponse] = useState([]);
+  const [productsSearch, setProductsSearch] = useState([]);
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
 
@@ -18,7 +18,7 @@ function App() {
       try {
         const response = await api.get("products");
         setProducts(response.data);
-        setProductsResponse(response.data);
+        setProductsSearch(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -47,7 +47,7 @@ function App() {
       <Header
         products={products}
         setProducts={setProducts}
-        productsResponse={productsResponse}
+        productsSearch={productsSearch}
       />
       <Main className="container__main">
         <ListProducts products={products} setCart={setCart} cart={cart} />

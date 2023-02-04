@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { HeaderStyle } from "./style";
 
-export function Header({ setProducts, productsResponse }) {
+export function Header({ setProducts, productsSearch, products }) {
   const [search, setSearch] = useState("");
 
   function Search(event) {
     if (event === "") {
-      setProducts(productsResponse);
+      setProducts(productsSearch);
     } else {
-      const arrayFilter = productsResponse.filter((product) =>
+      const arrayFilter = products.filter((product) =>
         product.name.toLowerCase().includes(event.toLowerCase())
       );
       setProducts(arrayFilter);
